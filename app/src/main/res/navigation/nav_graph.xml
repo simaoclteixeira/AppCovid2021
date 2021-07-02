@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/ListaUtentesFragment">
+
+    <fragment
+        android:id="@+id/FirstFragment"
+        android:name="pt.ipg.appcovid2021.ListaUtentesFragment"
+        android:label="@string/Utentes"
+        tools:layout="@layout/fragment_lista_utentes">
+
+        <action
+            android:id="@+id/action_ListaUtentesFragment_to_NovoUtenteFragment"
+            app:destination="@id/NovoUtenteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/NovoUtenteFragment"
+        android:name="pt.ipg.appcovid2021.NovoUtenteFragment"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/fragment_novo_utente">
+
+        <action
+            android:id="@+id/action_NovoUtenteFragment_to_ListaUtentesFragment"
+            app:destination="@id/ListaUtentesFragment" />
+    </fragment>
+</navigation>
