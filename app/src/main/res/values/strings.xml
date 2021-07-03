@@ -16,4 +16,6 @@
     <string name="alterar_livro">alterar_livros</string>
     <string name="novo_livro">novo_livro</string>
     <string name="_01_08_1996">01/08/1996</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

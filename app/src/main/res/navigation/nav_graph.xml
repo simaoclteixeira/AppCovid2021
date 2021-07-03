@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="pt.ipg.appcovid2021.ListaUtentesFragment"
+        android:name="pt.ipg.appcovid2021.FragmentUtentes"
         android:label="@string/Utentes"
-        tools:layout="@layout/fragment_lista_utentes">
+        tools:layout="@layout/fragment_utentes">
 
         <action
-            android:id="@+id/action_ListaUtentesFragment_to_NovoUtenteFragment"
+            android:id="@+id/action_UtentesFragment_to_NovoUtenteFragment"
             app:destination="@id/NovoUtenteFragment" />
     </fragment>
     <fragment
@@ -22,7 +22,7 @@
         tools:layout="@layout/fragment_novo_utente">
 
         <action
-            android:id="@+id/action_NovoUtenteFragment_to_ListaUtentesFragment"
-            app:destination="@id/ListaUtentesFragment" />
+            android:id="@+id/action_NovoUtenteFragment_to_UtentesFragment"
+            app:destination="@id/FragmentUtentes" />
     </fragment>
 </navigation>

@@ -19,7 +19,7 @@
         app:layout_constraintEnd_toStartOf="@+id/textViewCodigoPostalItem"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Simão Cardoso Leal Teixeira" />
+        tools:text="Vacina Pfizer" />
 
     <TextView
         android:id="@+id/textViewDataVacina"
@@ -30,12 +30,12 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintStart_toStartOf="@+id/textViewNomeLocalidadeItem"
         app:layout_constraintTop_toBottomOf="@+id/textViewNomeLocalidadeItem"
-        tools:text="140325117" />
+        tools:text="20/12/2021" />
 
     <TextView
         android:id="@+id/textViewCodigoPostalItem"
-        android:layout_width="66dp"
-        android:layout_height="26dp"
+        android:layout_width="72dp"
+        android:layout_height="23dp"
         android:layout_marginTop="48dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
@@ -43,19 +43,6 @@
         android:textColor="@color/cor_destaque"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Pfizer" />
+        tools:text="Guarda" />
 
-    <TextView
-        android:id="@+id/textViewDataNascimentoItem"
-        android:layout_width="85dp"
-        android:layout_height="26dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginLeft="64dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="64dp"
-        android:layout_marginRight="64dp"
-        android:text="@string/_01_08_1996"
-        app:layout_constraintEnd_toStartOf="@+id/textViewCodigoPostalItem"
-        app:layout_constraintStart_toEndOf="@+id/textViewDataVacina"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNomeLocalidadeItem" />
 </androidx.constraintlayout.widget.ConstraintLayout>
