@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/FirstFragment"
         android:name="pt.ipg.appcovid2021.FragmentUtentes"
-        android:label="@string/Utentes"
+        android:label="@string/utentes"
         tools:layout="@layout/fragment_utentes">
 
         <action

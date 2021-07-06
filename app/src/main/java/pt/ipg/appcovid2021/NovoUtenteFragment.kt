@@ -54,6 +54,16 @@ class NovoUtenteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
     }
 
+    fun processaOpcaoMenu(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_guardar_novo_paciente -> guardar()
+            R.id.action_cancelar_novo_paciente -> navegaPaciente()
+            else -> return false
+        }
+
+        return true
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

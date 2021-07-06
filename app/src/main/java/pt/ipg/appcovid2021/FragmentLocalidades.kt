@@ -29,7 +29,7 @@ class FragmentLocalidades : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         savedInstanceState: Bundle?
     ): View? {
         DadosApp.fragment = this
-        (activity as MainActivity).menuAtual = R.menu.menu_locais
+        (activity as MainActivity).menuAtual = R.menu.menu_lista_localizacoes
 
         _binding = FragmentLocalidadesBinding.inflate(inflater, container, false)
         return binding.root
@@ -82,10 +82,10 @@ class FragmentLocalidades : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
         return CursorLoader(
             requireContext(),
-            ContentProviderActivity.ENDERECO_LOCAL,
+            ContentProviderActivity.ENDEREÇO_LOCALIZACAO,
             TabelaLocalidades.TODAS_COLUNAS,
             null, null,
-            TabelaLocalidades.CAMPO_CIDADE
+            TabelaLocalidades.NOME_LOCALIDADE
         )
     }
 

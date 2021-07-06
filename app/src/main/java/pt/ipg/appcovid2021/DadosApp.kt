@@ -9,6 +9,8 @@ class DadosApp {
         lateinit var fragment: Fragment
 
         var novoUtenteFragment: NovoUtenteFragment? = null
+        var novaLocalidadeFragment: NovaLocalidadeFragment? = null
+
         var localidadeSelecionado : Localidade? = null
 
 

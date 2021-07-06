@@ -32,7 +32,7 @@ class FragmentUtentes : Fragment(), LoaderManager.LoaderCallbacks<Cursor>{
         savedInstanceState: Bundle?
     ): View? {
         DadosApp.fragment = this
-        (activity as MainActivity).menuAtual = R.menu.menu_pacientes
+        (activity as MainActivity).menuAtual = R.menu.menu_lista_utentes
 
 
         _binding = FragmentUtentesBinding.inflate(inflater, container, false)
@@ -85,7 +85,7 @@ class FragmentUtentes : Fragment(), LoaderManager.LoaderCallbacks<Cursor>{
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
         return CursorLoader(
             requireContext(),
-            ContentProviderActivity.ENDERECO_UTENTE,
+            ContentProviderActivity.ENDEREÇO_UTENTES,
             TabelaUtentes.TODAS_COLUNAS,
             null,null,
             TabelaUtentes.CAMPO_NOME_UTENTE

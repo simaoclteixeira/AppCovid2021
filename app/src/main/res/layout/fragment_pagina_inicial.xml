@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentPaginaInicial" >
+
+    <Button
+        android:id="@+id/buttonUtentes"
+        android:layout_width="139dp"
+        android:layout_height="60dp"
+        android:layout_margin="8dp"
+        android:layout_marginTop="32dp"
+        android:text="UTENTES"
+        app:backgroundTint="?android:attr/textColorHighlight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPaginaInicial" />
+
+    <Button
+        android:id="@+id/buttonLocalidades"
+        android:layout_width="139dp"
+        android:layout_height="60dp"
+        android:layout_margin="8dp"
+        android:layout_marginTop="32dp"
+        android:text="Localidades"
+        app:backgroundTint="?android:attr/textColorHighlight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonVacinas" />
+
+
+
+    <Button
+        android:id="@+id/buttonVacinas"
+        android:layout_width="139dp"
+        android:layout_height="60dp"
+        android:layout_margin="8dp"
+        android:layout_marginTop="32dp"
+        android:text="VACINAS"
+        app:backgroundTint="?android:attr/textColorHighlight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonUtentes" />
+
+    <TextView
+        android:id="@+id/textViewPaginaInicial"
+        android:layout_width="408dp"
+        android:layout_height="43dp"
+        android:layout_margin="0dp"
+        android:gravity="center|top"
+        android:text="AppCovid2021"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewPaginaInicial" />
+
+    <ImageView
+        android:id="@+id/imageViewPaginaInicial"
+        android:layout_width="410dp"
+        android:layout_height="292dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

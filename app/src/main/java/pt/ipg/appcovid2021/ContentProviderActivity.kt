@@ -173,8 +173,8 @@ class ContentProviderActivity : ContentProvider() {
         private  const val UNICO_ITEMS = "vnd.android.cursor.item"
 
         private val ENDEREÇO_BASE = Uri.parse("content://$AUTHORITY")
-        private val ENDEREÇO_UTENTES = Uri.withAppendedPath(ENDEREÇO_BASE, UTENTE)
-        private val ENDEREÇO_LOCALIZACAO = Uri.withAppendedPath(ENDEREÇO_BASE, LOCALIZACAO)
+        val ENDEREÇO_UTENTES = Uri.withAppendedPath(ENDEREÇO_BASE, UTENTE)
+        val ENDEREÇO_LOCALIZACAO = Uri.withAppendedPath(ENDEREÇO_BASE, LOCALIZACAO)
         val ENDEREÇO_VACINAS = Uri.withAppendedPath(ENDEREÇO_BASE, VACINAS)
 
         private fun getUriMatcher() : UriMatcher{
