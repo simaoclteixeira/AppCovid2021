@@ -13,11 +13,11 @@ import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import pt.ipg.appcovid2021.databinding.FragmentLocalidadesBinding
+import pt.ipg.appcovid2021.databinding.FragmentLocalidades2Binding
 
-class FragmentLocalidades : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
+class FragmentLocalidades2 : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
-    private var _binding: FragmentLocalidadesBinding? = null
+    private var _binding: FragmentLocalidades2Binding? = null
     private var adapterLocais : AdapterLocalidades? = null
 
     // This property is only valid between onCreateView and
@@ -31,7 +31,7 @@ class FragmentLocalidades : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         DadosApp.fragment = this
         (activity as MainActivity).menuAtual = R.menu.menu_lista_localizacoes
 
-        _binding = FragmentLocalidadesBinding.inflate(inflater, container, false)
+        _binding = FragmentLocalidades2Binding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -50,22 +50,22 @@ class FragmentLocalidades : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
     }
     fun navegaNovoLocal() {
-        findNavController().navigate(R.id.action_FragmentLocal_to_fragmentNovoLocal)
+        findNavController().navigate(R.id.action_fragmentLocalidades2_to_novaLocalidadeFragment)
     }
     fun navegaAlterarLocal() {
-        findNavController().navigate(R.id.action_FragmentLocal_to_fragmentEditaLocal)
+        findNavController().navigate(R.id.action_fragmentLocalidades2_to_editaLocalidadeFragment)
 
     }
 
     fun navegaEliminarLocal() {
-        findNavController().navigate(R.id.action_FragmentLocal_to_fragmentEliminaLocal)
+        findNavController().navigate(R.id.action_fragmentLocalidades2_to_eliminaLocalidadeFragment2)
     }
 
     fun processaOpcaoMenu(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_novo_local -> navegaNovoLocal()
-            R.id.action_alterar_local -> navegaAlterarLocal()
-            R.id.action_eliminar_local -> navegaEliminarLocal()
+            R.id.action_nova_localizacao -> navegaNovoLocal()
+            R.id.action_alterar_localizacao -> navegaAlterarLocal()
+            R.id.action_eliminar_localizacao -> navegaEliminarLocal()
             else -> return false
         }
 

@@ -10,15 +10,10 @@ class DadosApp {
 
         var novoUtenteFragment: NovoUtenteFragment? = null
         var novaLocalidadeFragment: NovaLocalidadeFragment? = null
+        var novaVacinaFragment: NovaVacinaFragment2? = null
 
         var localidadeSelecionado : Localidade? = null
-
-
-        // var listaUtentesFragment: ListaUtentesFragment? = null
-
-
-
-
         var UtenteSelecionado: Utente? = null
+        var vacinaSelecionado: Vacina? = null
     }
 }

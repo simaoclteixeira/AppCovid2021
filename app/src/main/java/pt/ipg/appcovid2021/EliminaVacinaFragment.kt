@@ -12,10 +12,13 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 
 
-class EliminaLocalidadeFragment : Fragment() {
+class EliminaVacinaFragment : Fragment() {
 
-    private lateinit var textViewLocalidadeEliminar: TextView
-    private lateinit var textViewCodigoPostalEliminar: TextView
+    private lateinit var textViewNomeVacinaEliminar: TextView
+    private lateinit var textViewDataVacinaEliminar: TextView
+    private lateinit var textViewLocalidadeVacinaEliminar: TextView
+
+
 
 
 
@@ -24,26 +27,31 @@ class EliminaLocalidadeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         DadosApp.fragment = this
-        (activity as MainActivity).menuAtual = R.menu.menu_elimina_localidade
+        (activity as MainActivity).menuAtual = R.menu.menu_elimina_vacina
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_elimina_localidade, container, false)
+        return inflater.inflate(R.layout.fragment_elimina_vacina, container, false)
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        textViewLocalidadeEliminar = view.findViewById(R.id.textViewEliminaNomeVacina2)
-        textViewCodigoPostalEliminar = view.findViewById(R.id.textViewEliminaDataVacina2)
+        textViewNomeVacinaEliminar = view.findViewById(R.id.textViewEliminaNomeVacina2)
+        textViewDataVacinaEliminar = view.findViewById(R.id.textViewEliminaDataVacina2)
+        textViewLocalidadeVacinaEliminar = view.findViewById(R.id.textViewEliminaLocalidadeVacina2)
 
 
-        val localidade = DadosApp.localidadeSelecionado!!
-        textViewLocalidadeEliminar.setText(localidade.nome)
-        textViewCodigoPostalEliminar.setText(localidade.codigoPostal)
+
+
+        val vacina = DadosApp.vacinaSelecionado!!
+        textViewNomeVacinaEliminar.setText(vacina.nomeVacina)
+        //textViewDataVacinaEliminar.setText(vacina.data)
+        textViewLocalidadeVacinaEliminar.setText(vacina.localidade)
+
 
     }
 
     fun navegaLocal() {
-        findNavController().navigate(R.id.action_eliminaLocalidadeFragment_to_fragmentPaginaInicial)
+        findNavController().navigate(R.id.action_eliminaVacinaFragment_to_fragmentPaginaInicial)
     }
 
     fun elimina() {
@@ -79,8 +87,8 @@ class EliminaLocalidadeFragment : Fragment() {
 
     fun processaOpcaoMenu(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_confirma_eliminar_localidade -> elimina()
-            R.id.action_cancelar_eliminar_localidade -> navegaLocal()
+            R.id.action_confirma_eliminar_vacina -> elimina()
+            R.id.action_cancelar_eliminar_vacina -> navegaLocal()
             else -> return false
         }
 

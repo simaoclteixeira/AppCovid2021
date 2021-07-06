@@ -33,13 +33,13 @@ class FragmentPaginaInicial : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonUtentes.setOnClickListener {
-            findNavController().navigate(R.id.action_FragmentInicio_to_FragmentPaciente)
+            findNavController().navigate(R.id.action_fragmentPaginaInicial_to_FragmentUtentes)
         }
         binding.buttonVacinas.setOnClickListener {
-            findNavController().navigate(R.id.action_FragmentInicio_to_FragmentLocal)
+            findNavController().navigate(R.id.action_fragmentPaginaInicial_to_fragmentVacinas22)
         }
         binding.buttonLocalidades.setOnClickListener {
-            findNavController().navigate(R.id.action_FragmentInicio_to_FragmentVacinacao)
+            findNavController().navigate(R.id.action_fragmentPaginaInicial_to_fragmentLocalidades2)
         }
 
 

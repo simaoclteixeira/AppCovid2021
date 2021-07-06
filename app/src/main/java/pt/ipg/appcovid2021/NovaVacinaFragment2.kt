@@ -16,19 +16,18 @@ import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
-import pt.ipg.appcovid2021.databinding.FragmentNovoUtenteBinding
+import pt.ipg.appcovid2021.databinding.FragmentNovaVacina2Binding
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
-class NovoUtenteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
+class NovaVacinaFragment2 : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
-    private var _binding: FragmentNovoUtenteBinding? = null
+    private var _binding: FragmentNovaVacina2Binding? = null
 
-    private lateinit var editTextNomeUtente: EditText
-    private lateinit var editTextNumeroUtente: EditText
-    private lateinit var editTextDataNascimento: EditText
-    private lateinit var spinnerVacinas: Spinner
+    private lateinit var editTextNomeVacina: EditText
+    private lateinit var editTextDataVacina: EditText
+    private lateinit var spinnerLocalidades: Spinner
 
     private val binding get() = _binding!!
 
@@ -36,10 +35,10 @@ class NovoUtenteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        DadosApp.novoUtenteFragment = this
-        (activity as MainActivity).menuAtual = R.menu.menu_novo_utente
+        DadosApp.novaVacinaFragment = this
+        (activity as MainActivity).menuAtual = R.menu.menu_nova_vacina
 
-        _binding = FragmentNovoUtenteBinding.inflate(inflater, container, false)
+        _binding = FragmentNovaVacina2Binding.inflate(inflater, container, false)
         return binding.root
 
     }
@@ -47,10 +46,9 @@ class NovoUtenteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        editTextNomeUtente = view.findViewById(R.id.TextInputNomeUtente)
-        editTextNumeroUtente = view.findViewById(R.id.TextInputNumeroUtente)
-        editTextDataNascimento = view.findViewById(R.id.TextInputDataNascimento)
-        spinnerVacinas = view.findViewById(R.id.spinnerVacinas)
+        editTextNomeVacina = view.findViewById(R.id.TextInputNomeVacina)
+        editTextDataVacina = view.findViewById(R.id.TextInputDataVacina)
+        spinnerLocalidades = view.findViewById(R.id.spinnerLocalidades)
 
         LoaderManager.getInstance(this)
             .initLoader(ID_LOADER_MANAGER_VACINAS, null, this)
@@ -59,58 +57,41 @@ class NovoUtenteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
     fun processaOpcaoMenu(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_guardar_novo_utente -> guardar()
-            R.id.action_cancelar_novo_utente -> navegaListaUtentes()
+            R.id.action_guardar_nova_vacina -> guardar()
+            R.id.action_cancelar_nova_vacina -> navegaListaVacinas()
             else -> return false
         }
 
         return true
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
-    fun navegaListaUtentes() {
-        findNavController().navigate(R.id.action_NovoUtenteFragment_to_UtentesFragment)
-    }
-
     fun guardar() {
-        val NovoUtente = editTextNomeUtente.text.toString()
-        if (NovoUtente.isEmpty()) {
-            editTextNomeUtente.setError("Preencha este campo")
-            editTextNomeUtente.requestFocus()
+        val NovaVacina = editTextNomeVacina.text.toString()
+        if (NovaVacina.isEmpty()) {
+            editTextNomeVacina.setError("Preencha este campo")
+            editTextNomeVacina.requestFocus()
             return
         }
 
-        val numeroUtente = editTextNumeroUtente.text.toString()
-        if (numeroUtente.isEmpty()) {
-            editTextNumeroUtente.setError("Preencha este campo")
-            editTextNumeroUtente.requestFocus()
+        val DataVacina = editTextDataVacina.text.toString()
+        if  (DataVacina.isEmpty()) {
+            editTextDataVacina.setError("Preencha este campo")
+            editTextDataVacina.requestFocus()
             return
         }
 
-        val dataNascimento = editTextDataNascimento.text.toString()
-        if (dataNascimento.isEmpty()) {
-            editTextDataNascimento.setError("Preencha este campo")
-            editTextDataNascimento.requestFocus()
-            return
-        }
+        val idLocalidade = spinnerLocalidades.selectedItemId
 
-        val idVacina = spinnerVacinas.selectedItemId
-
-
-        val utente = Utente(nome = NovoUtente, nrpaciente = numeroUtente, dnascimento = dataNascimento, idVacina = idVacina)
+        val vacina = Vacina(nomeVacina = NovaVacina, data = DataVacina, localidade = idLocalidade.toString())
 
         val uri = activity?.contentResolver?.insert(
             ContentProviderActivity.ENDEREÇO_LOCALIZACAO,
-            utente.toContentValues()
+            vacina.toContentValues()
         )
 
         if (uri == null) {
             Snackbar.make(
-                editTextNomeUtente,
+                editTextNomeVacina,
                 ("erro ao inserir "),
                 Snackbar.LENGTH_LONG
             ).show()
@@ -122,7 +103,16 @@ class NovoUtenteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
             Toast.LENGTH_LONG
         ).show()
 
-        navegaListaUtentes()
+        navegaListaVacinas()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    fun navegaListaVacinas() {
+        findNavController().navigate(R.id.action_novaVacinaFragment2_to_fragmentVacinas22)
     }
 
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
@@ -144,7 +134,7 @@ class NovoUtenteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     }
 
     private fun atualizaSpinnerVacinas(data: Cursor?) {
-        spinnerVacinas.adapter = SimpleCursorAdapter(
+        spinnerLocalidades.adapter = SimpleCursorAdapter(
             requireContext(),
             android.R.layout.simple_list_item_1,
             data,

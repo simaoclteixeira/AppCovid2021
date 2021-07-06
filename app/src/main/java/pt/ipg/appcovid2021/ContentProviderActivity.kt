@@ -155,7 +155,7 @@ class ContentProviderActivity : ContentProvider() {
     }
 
     companion object{
-        private const val AUTHORITY= "com.example.covidapp"
+        private const val AUTHORITY= "pt.ipg.appcovid2021"
 
         private const val UTENTE = "Utente"
         private const val LOCALIZACAO = "Localizacao"

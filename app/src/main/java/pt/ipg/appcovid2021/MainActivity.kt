@@ -36,10 +36,7 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
+        DadosApp.activity = this
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -53,6 +50,9 @@ class MainActivity : AppCompatActivity() {
         }
         if (menuAtual == R.menu.menu_lista_localizacoes ) {
             atualizaMenuLocais(false)
+        }
+        if (menuAtual == R.menu.menu_lista_vacinas ) {
+            atualizaMenuVacinas(false)
         }
 
 
@@ -71,11 +71,15 @@ class MainActivity : AppCompatActivity() {
             }
             else -> when(menuAtual) {
                 R.menu.menu_lista_utentes -> (DadosApp.fragment as FragmentUtentes).processaOpcaoMenu(item)
+                R.menu.menu_lista_localizacoes -> (DadosApp.fragment as FragmentLocalidades2).processaOpcaoMenu(item)
+                R.menu.menu_lista_vacinas -> (DadosApp.fragment as FragmentVacinas2).processaOpcaoMenu(item)
                 R.menu.menu_novo_utente -> (DadosApp.fragment as NovoUtenteFragment).processaOpcaoMenu(item)
-                R.menu.menu_pagina_inicial -> (DadosApp.fragment as FragmentPaginaInicial).processaOpcaoMenu(item)
-                R.menu.menu_lista_localizacoes -> (DadosApp.fragment as FragmentLocalidades).processaOpcaoMenu(item)
                 R.menu.menu_nova_localizacao ->(DadosApp.fragment as NovaLocalidadeFragment).processaOpcaoMenu(item)
+                R.menu.menu_nova_vacina ->(DadosApp.fragment as NovaVacinaFragment2).processaOpcaoMenu(item)
+                R.menu.menu_pagina_inicial -> (DadosApp.fragment as FragmentPaginaInicial).processaOpcaoMenu(item)
                 R.menu.menu_edita_localizacao -> (DadosApp.fragment as EditaLocalidadeFragment).processaOpcaoMenu(item)
+                R.menu.menu_edita_vacina -> (DadosApp.fragment as EditaVacinaFragment).processaOpcaoMenu(item)
+                R.menu.menu_edita_utentes -> (DadosApp.fragment as EditaUtenteFragment2).processaOpcaoMenu(item)
                 R.menu.menu_elimina_localidade -> (DadosApp.fragment as EliminaLocalidadeFragment).processaOpcaoMenu(item)
                 else -> false
             }
@@ -101,5 +105,9 @@ class MainActivity : AppCompatActivity() {
     fun atualizaMenuLocais(mostraBotoesAlterarEliminar : Boolean) {
         menu.findItem(R.id.action_alterar_localizacao).setVisible(mostraBotoesAlterarEliminar)
         menu.findItem(R.id.action_eliminar_localizacao).setVisible(mostraBotoesAlterarEliminar)
+    }
+    fun atualizaMenuVacinas(mostraBotoesAlterarEliminar : Boolean) {
+        menu.findItem(R.id.action_alterar_vacina).setVisible(mostraBotoesAlterarEliminar)
+        menu.findItem(R.id.action_eliminar_vacina).setVisible(mostraBotoesAlterarEliminar)
     }
 }

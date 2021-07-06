@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".NovoUtenteFragment">
+    tools:context=".NovaVacinaFragment2">
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/TextInputNomeUtente"
+            android:id="@+id/TextInputNomeVacina"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/nome"
@@ -26,37 +26,25 @@
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/TextInputNumeroUtente"
+                android:id="@+id/TextInputDataVacina"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/numero_utente"
-                android:inputType="phone" />
+                android:hint="@string/data"
+                android:inputType="date" />
 
-            <com.google.android.material.textfield.TextInputLayout
+            <TextView
+                android:id="@+id/textViewLocalidade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/localidade" />
+
+            <Spinner
+                android:id="@+id/spinnerLocalidades"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/TextInputDataNascimento"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/data_nascimento"
-                    android:inputType="date" />
-
-                <TextView
-                    android:id="@+id/textViewVacina"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/vacina" />
-
-                <Spinner
-                    android:id="@+id/spinnerVacinas"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp" />
-            </com.google.android.material.textfield.TextInputLayout>
         </com.google.android.material.textfield.TextInputLayout>
     </com.google.android.material.textfield.TextInputLayout>
 </LinearLayout>

@@ -59,18 +59,18 @@ class FragmentUtentes : Fragment(), LoaderManager.LoaderCallbacks<Cursor>{
         findNavController().navigate(R.id.action_UtentesFragment_to_NovoUtenteFragment)
     }
     fun navegaAlterarPaciente() {
-        //todo: navegar para o fragmento da edição de um livro
+        findNavController().navigate(R.id.action_FragmentUtentes_to_editaUtenteFragment22)
     }
 
     fun navegaEliminarPaciente() {
-        //todo: navegar para o fragmento para confirmar eliminação de um livro
+        findNavController().navigate(R.id.action_FragmentUtentes_to_eliminaUtenteFragment)
     }
 
     fun processaOpcaoMenu(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_novo_paciente -> navegaNovoPaciente()
-            R.id.action_alterar_paciente-> navegaAlterarPaciente()
-            R.id.action_eliminar_paciente -> navegaEliminarPaciente()
+            R.id.action_novo_utente -> navegaNovoPaciente()
+            R.id.action_alterar_utente-> navegaAlterarPaciente()
+            R.id.action_eliminar_utente -> navegaEliminarPaciente()
             else -> return false
         }
 

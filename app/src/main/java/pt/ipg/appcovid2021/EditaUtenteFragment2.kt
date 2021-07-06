@@ -17,9 +17,12 @@ import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
 
 
-class EditaLocalidadeFragment : Fragment()  {
-    private lateinit var editTextNomeLocalidade: EditText
-    private lateinit var editTextCodigoPostal: EditText
+class EditaUtenteFragment2 : Fragment()  {
+
+    private lateinit var editTextNomeUtente: EditText
+    private lateinit var editTextNrpaciente: EditText
+    private lateinit var editTextDataNascimento: EditText
+    private lateinit var spinnerVacinas: Spinner
 
 
     // TODO: Rename and change types of parameters
@@ -34,56 +37,68 @@ class EditaLocalidadeFragment : Fragment()  {
     ): View? {
 
         DadosApp.fragment = this
-        (activity as MainActivity).menuAtual = R.menu.menu_edita_localizacao
+        (activity as MainActivity).menuAtual = R.menu.menu_edita_utentes
 
-        return inflater.inflate(R.layout.fragment_edita_localidade, container, false)
+        return inflater.inflate(R.layout.fragment_edita_utente2, container, false)
 
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        editTextNomeLocalidade= view.findViewById(R.id.editTextNomeLocalidade)
-        editTextCodigoPostal = view.findViewById(R.id.editTextCodigoPostal)
+        editTextNomeUtente= view.findViewById(R.id.editTextEditaNomeUtente)
+        editTextNrpaciente = view.findViewById(R.id.editTextEditaNumeroPaciente)
+        editTextDataNascimento = view.findViewById(R.id.editTextEditaDataNascimento)
 
 
-        editTextNomeLocalidade.setText(DadosApp.localidadeSelecionado!!.nome)
-        editTextCodigoPostal.setText(DadosApp.localidadeSelecionado!!.codigoPostal)
+
+        editTextNomeUtente.setText(DadosApp.UtenteSelecionado!!.nome)
+        editTextNrpaciente.setText(DadosApp.UtenteSelecionado!!.nrpaciente)
+        //editTextDataNascimento.setText(DadosApp.UtenteSelecionado!!.dnascimento)
+
 
     }
     fun navegaLocal() {
-        findNavController().navigate(R.id.action_editaLocalidadeFragment_to_fragmentPaginaInicial)
+        findNavController().navigate(R.id.action_editaUtenteFragment22_to_fragmentPaginaInicial)
     }
 
     fun guardar() {
-        val NomeCidade = editTextNomeLocalidade.text.toString()
-        if (NomeCidade.isEmpty()) {
-            editTextNomeLocalidade.setError("Preenche este campo")
-            editTextNomeLocalidade.requestFocus()
+        val NomeUtente = editTextNomeUtente.text.toString()
+        if (NomeUtente.isEmpty()) {
+            editTextNomeUtente.setError("Preenche este campo")
+            editTextNomeUtente.requestFocus()
             return
         }
 
-        val CodigoPostal = editTextCodigoPostal.text.toString()
-        if (CodigoPostal.isEmpty()) {
-            editTextCodigoPostal.setError("Preencha este campo")
-            editTextCodigoPostal.requestFocus()
+        val NumeroUtente = editTextNrpaciente.text.toString()
+        if (NomeUtente.isEmpty()) {
+            editTextNrpaciente.setError("Preencha este campo")
+            editTextNrpaciente.requestFocus()
+            return
+        }
+
+        val DataNascimento = editTextDataNascimento.text.toString()
+        if (DataNascimento.isEmpty()) {
+            editTextDataNascimento.setError("Preencha este campo")
+            editTextDataNascimento.requestFocus()
             return
         }
 
 
 
-        val localidade = DadosApp.localidadeSelecionado!!
-        localidade.nome = NomeCidade
-        localidade.codigoPostal = CodigoPostal
+        val utente = DadosApp.UtenteSelecionado!!
+        utente.nome = NomeUtente
+       // utente.dnascimento = DataNascimento
+        utente.nrpaciente = NumeroUtente
 
 
         val uriLocal = Uri.withAppendedPath(
             ContentProviderActivity.ENDEREÇO_LOCALIZACAO,
-            localidade.id.toString()
+            utente.id.toString()
         )
 
         val registos = activity?.contentResolver?.update(
             uriLocal,
-            localidade.toContentValues(),
+            utente.toContentValues(),
             null,
             null
         )

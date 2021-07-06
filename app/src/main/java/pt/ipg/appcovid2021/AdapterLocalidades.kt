@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class AdapterLocalidades (val fragment: FragmentLocalidades): RecyclerView.Adapter<AdapterLocalidades.ViewHolderLocal>() {
+class AdapterLocalidades (val fragment: FragmentLocalidades2): RecyclerView.Adapter<AdapterLocalidades.ViewHolderLocal>() {
     public var cursor: Cursor? = null
         get() = field
         set(value) {

@@ -52,7 +52,7 @@ class NovaLocalidadeFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
         _binding = null
     }
     fun navegaLocal() {
-        findNavController().navigate(R.id.action_fragmentNovoLocal_to_fragmentInicioPage)
+        findNavController().navigate(R.id.action_novaLocalidadeFragment_to_fragmentPaginaInicial)
     }
 
     fun guardar() {

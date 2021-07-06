@@ -20,4 +20,13 @@
     <string name="eliminar_utente">eliminar_utente</string>
     <string name="codigo_postal">Codigo Postal</string>
     <string name="nome">Nome</string>
+    <string name="data_vacina">Data Vacina</string>
+    <string name="localidade">Localidade</string>
+    <string name="data_nascimento">Data Nascimento</string>
+    <string name="vacina">Vacina</string>
+    <string name="numero_utente">Numero Utente</string>
+    <string name="data">Data</string>
+    <string name="nova_vacina">nova_vacina</string>
+    <string name="alterar_vacina">alterar_vacina</string>
+    <string name="eliminar_vacina">eliminar_vacina</string>
 </resources>

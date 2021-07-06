@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class AdapterVacinas(val fragment: FragmentVacinas): RecyclerView.Adapter<AdapterVacinas.ViewHolderVacina>() {
+class AdapterVacinas(val fragment: FragmentVacinas2): RecyclerView.Adapter<AdapterVacinas.ViewHolderVacina>() {
 
     public var cursor: Cursor? = null
         get() = field

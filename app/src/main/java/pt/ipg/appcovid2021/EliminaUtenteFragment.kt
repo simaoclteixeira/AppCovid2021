@@ -12,10 +12,13 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 
 
-class EliminaLocalidadeFragment : Fragment() {
+class EliminaUtenteFragment : Fragment() {
 
-    private lateinit var textViewLocalidadeEliminar: TextView
-    private lateinit var textViewCodigoPostalEliminar: TextView
+    private lateinit var textViewNomeUtenteEliminar: TextView
+    private lateinit var textViewNumeroUtenteEliminar: TextView
+    private lateinit var textViewDataUtenteEliminar: TextView
+    private lateinit var textViewVacinaUtenteEliminar: TextView
+
 
 
 
@@ -24,26 +27,31 @@ class EliminaLocalidadeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         DadosApp.fragment = this
-        (activity as MainActivity).menuAtual = R.menu.menu_elimina_localidade
+        (activity as MainActivity).menuAtual = R.menu.menu_elimina_utentes
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_elimina_localidade, container, false)
+        return inflater.inflate(R.layout.fragment_elimina_utente, container, false)
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        textViewLocalidadeEliminar = view.findViewById(R.id.textViewEliminaNomeVacina2)
-        textViewCodigoPostalEliminar = view.findViewById(R.id.textViewEliminaDataVacina2)
+        textViewNomeUtenteEliminar = view.findViewById(R.id.textViewNomeUtenteEliminar2)
+        textViewNumeroUtenteEliminar = view.findViewById(R.id.textViewNumeroUtenteEliminar2)
+        textViewDataUtenteEliminar = view.findViewById(R.id.textViewDataUtenteEliminar2)
+        textViewVacinaUtenteEliminar = view.findViewById(R.id.textViewVacinaUtenteEliminar2)
 
 
-        val localidade = DadosApp.localidadeSelecionado!!
-        textViewLocalidadeEliminar.setText(localidade.nome)
-        textViewCodigoPostalEliminar.setText(localidade.codigoPostal)
+
+        val utente = DadosApp.UtenteSelecionado!!
+        textViewNomeUtenteEliminar.setText(utente.nome)
+        textViewNumeroUtenteEliminar.setText(utente.nrpaciente)
+        //textViewDataUtenteEliminar.setText(utente.dnascimento)
+        textViewVacinaUtenteEliminar.setText(utente.nomeVacina)
 
     }
 
     fun navegaLocal() {
-        findNavController().navigate(R.id.action_eliminaLocalidadeFragment_to_fragmentPaginaInicial)
+        findNavController().navigate(R.id.action_eliminaUtenteFragment_to_fragmentPaginaInicial)
     }
 
     fun elimina() {
