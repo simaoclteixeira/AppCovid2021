@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,7 +8,7 @@
     tools:context=".EliminaLocalidadeFragment">
 
     <TextView
-        android:id="@+id/textViewEliminaNomeVacina"
+        android:id="@+id/textViewEliminaNomeLocalizacao"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -20,16 +21,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewEliminaNomeVacina2"
+        android:id="@+id/textViewEliminaNomeLocalizacao2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewEliminaNomeVacina" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewEliminaNomeLocalizacao" />
 
     <TextView
-        android:id="@+id/textViewEliminaDataVacina"
+        android:id="@+id/textViewEliminaCodigoPostal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -38,15 +39,15 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewEliminaNomeVacina2" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewEliminaNomeLocalizacao2" />
 
     <TextView
-        android:id="@+id/textViewEliminaDataVacina2"
+        android:id="@+id/textViewEliminaCodigoPostal2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewEliminaDataVacina" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewEliminaCodigoPostal" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

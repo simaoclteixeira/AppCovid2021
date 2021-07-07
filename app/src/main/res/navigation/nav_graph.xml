@@ -82,7 +82,7 @@
             android:id="@+id/action_fragmentLocalidades2_to_editaLocalidadeFragment"
             app:destination="@id/editaLocalidadeFragment" />
         <action
-            android:id="@+id/action_fragmentLocalidades2_to_eliminaLocalidadeFragment2"
+            android:id="@+id/action_fragmentLocalidades2_to_eliminaLocalidadeFragment"
             app:destination="@id/eliminaLocalidadeFragment" />
     </fragment>
     <fragment
@@ -113,15 +113,6 @@
             app:destination="@id/fragmentPaginaInicial" />
     </fragment>
     <fragment
-        android:id="@+id/eliminaLocalidadeFragment"
-        android:name="pt.ipg.appcovid2021.EliminaLocalidadeFragment"
-        android:label="fragment_elimina_vacina"
-        tools:layout="@layout/fragment_elimina_vacina" >
-        <action
-            android:id="@+id/action_eliminaLocalidadeFragment_to_fragmentPaginaInicial"
-            app:destination="@id/fragmentPaginaInicial" />
-    </fragment>
-    <fragment
         android:id="@+id/editaUtenteFragment22"
         android:name="pt.ipg.appcovid2021.EditaUtenteFragment2"
         android:label="fragment_edita_utente2"
@@ -146,6 +137,15 @@
         tools:layout="@layout/fragment_edita_vacina" >
         <action
             android:id="@+id/action_editaVacinaFragment_to_fragmentPaginaInicial"
+            app:destination="@id/fragmentPaginaInicial" />
+    </fragment>
+    <fragment
+        android:id="@+id/eliminaLocalidadeFragment"
+        android:name="pt.ipg.appcovid2021.EliminaLocalidadeFragment"
+        android:label="fragment_elimina_localidade"
+        tools:layout="@layout/fragment_elimina_localidade" >
+        <action
+            android:id="@+id/action_eliminaLocalidadeFragment_to_fragmentPaginaInicial"
             app:destination="@id/fragmentPaginaInicial" />
     </fragment>
 </navigation>

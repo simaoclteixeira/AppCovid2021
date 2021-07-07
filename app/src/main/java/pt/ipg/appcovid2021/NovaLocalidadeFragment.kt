@@ -2,14 +2,15 @@ package pt.ipg.appcovid2021
 
 import android.database.Cursor
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.loader.app.LoaderManager
+import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
@@ -32,7 +33,7 @@ class NovaLocalidadeFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        DadosApp.novaLocalidadeFragment = this
+        DadosApp.fragment = this
         (activity as MainActivity).menuAtual = R.menu.menu_nova_localizacao
 
         _binding = FragmentNovaLocalidadeBinding.inflate(inflater, container, false)
@@ -106,7 +107,13 @@ class NovaLocalidadeFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
     }
 
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
-        TODO("Not yet implemented")
+        return CursorLoader(
+            requireContext(),
+            ContentProviderActivity.ENDEREÇO_LOCALIZACAO,
+            TabelaLocalidades.TODAS_COLUNAS,
+            null, null,
+            TabelaLocalidades.NOME_LOCALIDADE
+        )
     }
 
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {

@@ -32,8 +32,8 @@ class EliminaLocalidadeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        textViewLocalidadeEliminar = view.findViewById(R.id.textViewEliminaNomeVacina2)
-        textViewCodigoPostalEliminar = view.findViewById(R.id.textViewEliminaDataVacina2)
+        textViewLocalidadeEliminar = view.findViewById(R.id.textViewEliminaNomeLocalizacao2)
+        textViewCodigoPostalEliminar = view.findViewById(R.id.textViewEliminaCodigoPostal2)
 
 
         val localidade = DadosApp.localidadeSelecionado!!

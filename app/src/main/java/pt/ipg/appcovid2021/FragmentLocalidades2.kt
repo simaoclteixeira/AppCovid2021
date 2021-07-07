@@ -58,7 +58,7 @@ class FragmentLocalidades2 : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     }
 
     fun navegaEliminarLocal() {
-        findNavController().navigate(R.id.action_fragmentLocalidades2_to_eliminaLocalidadeFragment2)
+        findNavController().navigate(R.id.action_fragmentLocalidades2_to_eliminaLocalidadeFragment)
     }
 
     fun processaOpcaoMenu(item: MenuItem): Boolean {

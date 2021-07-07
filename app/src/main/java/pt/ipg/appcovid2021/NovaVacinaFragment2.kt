@@ -2,7 +2,6 @@ package pt.ipg.appcovid2021
 
 import android.database.Cursor
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -11,12 +10,15 @@ import android.widget.EditText
 import android.widget.SimpleCursorAdapter
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import pt.ipg.appcovid2021.databinding.FragmentNovaVacina2Binding
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -35,7 +37,7 @@ class NovaVacinaFragment2 : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        DadosApp.novaVacinaFragment = this
+        DadosApp.fragment = this
         (activity as MainActivity).menuAtual = R.menu.menu_nova_vacina
 
         _binding = FragmentNovaVacina2Binding.inflate(inflater, container, false)
@@ -79,6 +81,32 @@ class NovaVacinaFragment2 : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
             editTextDataVacina.requestFocus()
             return
         }
+
+        /*fun convertLongToTime(time: Long): String {
+            val date = Date(time)
+            val format = SimpleDateFormat("yyyy.MM.dd HH:mm")
+            return format.format(date)
+        }
+
+        val parsedDate = LocalDateTime.parse("2018-12-14T09:55:00", DateTimeFormatter.ISO_DATE_TIME)
+        val formattedDate = parsedDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm"))
+
+        fun stringtodate() {
+            // Format y-M-d or yyyy-MM-d
+            val string = DataVacina
+            val date = LocalDate.parse(DataVacina, DateTimeFormatter.ISO_DATE)
+
+            println(DataVacina)
+        }*/
+
+        /*val dtStart : String = "2010-10-15";
+        val format = SimpleDateFormat("yyyy-MM-dd");
+        val date:Date? = try {
+            format.parse(DataVacina)
+        } catch (ParseException e) {
+            null
+        }*/
+
 
         val idLocalidade = spinnerLocalidades.selectedItemId
 

@@ -29,4 +29,7 @@
     <string name="nova_vacina">nova_vacina</string>
     <string name="alterar_vacina">alterar_vacina</string>
     <string name="eliminar_vacina">eliminar_vacina</string>
+    <string name="appcovid2021">AppCovid2021</string>
+    <string name="localidades">Localidades</string>
+    <string name="vacinas">Vacinas</string>
 </resources>

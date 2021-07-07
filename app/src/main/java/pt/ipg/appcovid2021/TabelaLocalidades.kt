@@ -14,15 +14,15 @@ class TabelaLocalidades(db: SQLiteDatabase) {
     }
 
     fun insert(values: ContentValues): Long {
-        return db.insert(TabelaLocalidades.NOME_TABELA, null, values)
+        return db.insert(NOME_TABELA, null, values)
     }
 
     fun update(values: ContentValues, whereClause: String, whereArgs: Array<String>): Int {
-        return db.update(TabelaLocalidades.NOME_TABELA, values, whereClause, whereArgs)
+        return db.update(NOME_TABELA, values, whereClause, whereArgs)
     }
 
     fun delete(whereClause: String, whereArgs: Array<String>): Int {
-        return db.delete(TabelaLocalidades.NOME_TABELA, whereClause, whereArgs)
+        return db.delete(NOME_TABELA, whereClause, whereArgs)
     }
 
 
@@ -34,7 +34,7 @@ class TabelaLocalidades(db: SQLiteDatabase) {
         having: String?,
         orderBy: String?
     ): Cursor? {
-        return db.query(TabelaLocalidades.NOME_TABELA, columns, selection, selectionArgs, groupBy, having, orderBy)
+        return db.query(NOME_TABELA, columns, selection, selectionArgs, groupBy, having, orderBy)
     }
 
 

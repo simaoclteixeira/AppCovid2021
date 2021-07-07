@@ -36,7 +36,7 @@ class NovoUtenteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        DadosApp.novoUtenteFragment = this
+        DadosApp.fragment = this
         (activity as MainActivity).menuAtual = R.menu.menu_novo_utente
 
         _binding = FragmentNovoUtenteBinding.inflate(inflater, container, false)
@@ -140,7 +140,7 @@ class NovoUtenteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     }
 
     override fun onLoaderReset(loader: Loader<Cursor>) {
-        atualizaSpinnerVacinas(data = null)
+        atualizaSpinnerVacinas(null)
     }
 
     private fun atualizaSpinnerVacinas(data: Cursor?) {

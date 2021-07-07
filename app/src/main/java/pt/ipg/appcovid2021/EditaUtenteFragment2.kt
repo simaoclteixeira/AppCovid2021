@@ -25,7 +25,7 @@ class EditaUtenteFragment2 : Fragment()  {
     private lateinit var spinnerVacinas: Spinner
 
 
-    // TODO: Rename and change types of parameters
+
     private var param1: String? = null
     private var param2: String? = null
 

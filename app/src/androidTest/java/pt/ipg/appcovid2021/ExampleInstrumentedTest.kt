@@ -25,4 +25,11 @@ class ExampleInstrumentedTest {
         assert(db.isOpen)
         db.close()
     }
+
+    private fun insereLocalidade(tabela: TabelaLocalidades, localidade: Localidade): Long {
+        val id = tabela.insert(localidade.toContentValues())
+        assertNotEquals(-1, id)
+        return id
+
+    }
 }
