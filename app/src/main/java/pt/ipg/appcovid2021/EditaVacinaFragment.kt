@@ -43,7 +43,7 @@ class EditaVacinaFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>  {
 
         editTextNomeVacina= view.findViewById(R.id.editTextEditaNomeVacina)
         editTextDataVacina = view.findViewById(R.id.editTextEditaDataVacina)
-        spinnerLocalidades = view.findViewById(R.id.spinnerLocalidades)
+        spinnerLocalidades = view.findViewById(R.id.spinnerEditaVacinas)
 
         LoaderManager.getInstance(this)
             .initLoader(ID_LOADER_MANAGER_CATEGORIAS, null, this)

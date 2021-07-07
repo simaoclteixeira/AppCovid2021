@@ -63,7 +63,7 @@
             android:text="@string/vacina" />
 
         <Spinner
-            android:id="@+id/spinnerEditaVacinas"
+            android:id="@+id/spinnerEditaUtentes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"

@@ -30,9 +30,9 @@ class EditaUtenteFragment2 : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         DadosApp.fragment = this
         (activity as MainActivity).menuAtual = R.menu.menu_edita_utentes
+
 
         return inflater.inflate(R.layout.fragment_edita_utente2, container, false)
 
@@ -40,10 +40,10 @@ class EditaUtenteFragment2 : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        editTextNomeUtente= view.findViewById(R.id.editTextEditaNomeUtente)
+        editTextNomeUtente = view.findViewById(R.id.editTextEditaNomeUtente)
         editTextNrpaciente = view.findViewById(R.id.editTextEditaNumeroPaciente)
         editTextDataNascimento = view.findViewById(R.id.editTextEditaDataNascimento)
-        spinnerVacinas = view.findViewById(R.id.spinnerVacinas)
+        spinnerVacinas = view.findViewById(R.id.spinnerEditaUtentes)
 
 
         LoaderManager.getInstance(this)
@@ -122,8 +122,8 @@ class EditaUtenteFragment2 : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     }
     fun processaOpcaoMenu(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_guardar_edita_localizacao -> guardar()
-            R.id.action_cancelar_edita_localizacao -> navegaLocal()
+            R.id.action_guardar_edita_utentes -> guardar()
+            R.id.action_cancelar_edita_utentes -> navegaLocal()
             else -> return false
         }
 
