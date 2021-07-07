@@ -9,6 +9,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.SimpleCursorAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.loader.app.LoaderManager
@@ -17,16 +18,11 @@ import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
 
 
-class EditaVacinaFragment : Fragment()  {
+class EditaVacinaFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>  {
 
     private lateinit var editTextNomeVacina: EditText
     private lateinit var editTextDataVacina: EditText
-    //private lateinit var spinnerLocalidades: Spinner
-
-
-
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var spinnerLocalidades: Spinner
 
 
 
@@ -41,21 +37,22 @@ class EditaVacinaFragment : Fragment()  {
         return inflater.inflate(R.layout.fragment_edita_vacina, container, false)
 
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        editTextNomeVacina= view.findViewById(R.id.editTextEditaNomeUtente)
-        editTextDataVacina = view.findViewById(R.id.editTextEditaNumeroPaciente)
-        // spinner editTextDataNascimento = view.findViewById(R.id.editTextEditaDataNascimento)
+        editTextNomeVacina= view.findViewById(R.id.editTextEditaNomeVacina)
+        editTextDataVacina = view.findViewById(R.id.editTextEditaDataVacina)
+        spinnerLocalidades = view.findViewById(R.id.spinnerLocalidades)
 
-
+        LoaderManager.getInstance(this)
+            .initLoader(ID_LOADER_MANAGER_CATEGORIAS, null, this)
 
         editTextNomeVacina.setText(DadosApp.vacinaSelecionado!!.nomeVacina)
-        //editTextDataVacina.setText(DadosApp.vacinaSelecionado!!.data)
-        //editTextDataNascimento.setText(DadosApp.UtenteSelecionado!!.dnascimento)
-
+        editTextDataVacina.setText(DadosApp.vacinaSelecionado!!.data)
 
     }
+
     fun navegaLocal() {
         findNavController().navigate(R.id.action_editaVacinaFragment_to_fragmentPaginaInicial)
     }
@@ -68,13 +65,6 @@ class EditaVacinaFragment : Fragment()  {
             return
         }
 
-        /*val NumeroUtente = editTextDataVacina.text.toString()
-        if (NomeVacina.isEmpty()) {
-            editTextDataVacina.setError("Preencha este campo")
-            editTextDataVacina.requestFocus()
-            return
-        }*/
-
         val DataVacina = editTextDataVacina.text.toString()
         if (DataVacina.isEmpty()) {
             editTextDataVacina.setError("Preencha este campo")
@@ -82,16 +72,16 @@ class EditaVacinaFragment : Fragment()  {
             return
         }
 
-
+        val idLocalidade = spinnerLocalidades.selectedItemId
 
         val vacina = DadosApp.vacinaSelecionado!!
         vacina.nomeVacina = NomeVacina
-        // utente.dnascimento = DataNascimento
-        //vacina.data = DataVacina
+        vacina.data = DataVacina
+        vacina.idLocalidade = idLocalidade
 
 
         val uriLocal = Uri.withAppendedPath(
-            ContentProviderActivity.ENDEREÇO_LOCALIZACAO,
+            ContentProviderActivity.ENDEREÇO_VACINAS,
             vacina.id.toString()
         )
 
@@ -126,5 +116,51 @@ class EditaVacinaFragment : Fragment()  {
         }
 
         return true
+    }
+
+    override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
+        return CursorLoader(
+            requireContext(),
+            ContentProviderActivity.ENDEREÇO_LOCALIZACAO,
+            TabelaLocalidades.TODAS_COLUNAS,
+            null, null,
+            TabelaLocalidades.NOME_LOCALIDADE
+        )
+    }
+
+    override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
+        atualizaSpinnerLocalidades(data)
+        atualizaLocalidadeSelecionada()
+    }
+
+    override fun onLoaderReset(loader: Loader<Cursor>) {
+        atualizaSpinnerLocalidades(null)
+    }
+
+    private fun atualizaSpinnerLocalidades(data: Cursor?) {
+        spinnerLocalidades.adapter = SimpleCursorAdapter(
+            requireContext(),
+            android.R.layout.simple_list_item_1,
+            data,
+            arrayOf(TabelaLocalidades.NOME_LOCALIDADE),
+            intArrayOf(android.R.id.text1),
+            0
+        )
+    }
+
+    private fun atualizaLocalidadeSelecionada() {
+        val idLocalidade = DadosApp.vacinaSelecionado!!.idLocalidade
+
+        val ultimaLocalidade = spinnerLocalidades.count - 1
+        for (i in 0..ultimaLocalidade) {
+            if (idLocalidade == spinnerLocalidades.getItemIdAtPosition(i)) {
+                spinnerLocalidades.setSelection(i)
+                return
+            }
+        }
+    }
+
+    companion object {
+        const val ID_LOADER_MANAGER_CATEGORIAS = 0
     }
 }

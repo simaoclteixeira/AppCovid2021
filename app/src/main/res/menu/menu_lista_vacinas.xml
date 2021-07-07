@@ -15,7 +15,7 @@
     <item
         android:id="@+id/action_eliminar_vacina"
         android:icon="@android:drawable/ic_menu_delete"
-        android:title="@string/eliminar_vacina"
+        android:title="@string/Elimina_Vacina"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_settings"

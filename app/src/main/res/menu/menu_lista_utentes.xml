@@ -15,7 +15,7 @@
     <item
         android:id="@+id/action_eliminar_utente"
         android:icon="@android:drawable/ic_menu_delete"
-        android:title="@string/eliminar_utente"
+        android:title="@string/Elimina_Utente"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_settings"

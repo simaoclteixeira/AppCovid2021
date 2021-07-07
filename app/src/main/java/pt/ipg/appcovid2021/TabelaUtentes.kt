@@ -9,7 +9,7 @@ class TabelaUtentes(db: SQLiteDatabase) {
     private val db: SQLiteDatabase = db
 
     fun cria() {
-        db.execSQL("CREATE TABLE $NOME_TABELA (${BaseColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT, $CAMPO_NOME_UTENTE TEXT NOT NULL, $CAMPO_DATA_NASCIMENTO INTEGER NOT NULL, $CAMPO_NR_UTENTE NUMERIC NOT NULL, $CAMPO_ID_VACINA INTEGER NOT NULL, FOREIGN KEY (${CAMPO_ID_VACINA}) REFERENCES ${TabelaVacinas.NOME_TABELA})")
+        db.execSQL("CREATE TABLE $NOME_TABELA (${BaseColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT, $CAMPO_NOME_UTENTE TEXT NOT NULL, $CAMPO_NR_UTENTE NUMERIC NOT NULL, $CAMPO_DATA_NASCIMENTO INTEGER NOT NULL, $CAMPO_ID_VACINA NUMERIC NOT NULL, FOREIGN KEY ($CAMPO_ID_VACINA) REFERENCES ${TabelaVacinas.NOME_TABELA})")
     }
 
     fun insert(values: ContentValues): Long {
@@ -32,19 +32,18 @@ class TabelaUtentes(db: SQLiteDatabase) {
         having: String?,
         orderBy: String?
     ): Cursor? {
-        return db.query(NOME_TABELA, columns, selection, selectionArgs, groupBy, having, orderBy)
 
-        /* val ultimaColuna = columns.size - 1
+        val ultimaColuna = columns.size - 1
 
-         var posColNomeVacina = -1 // -1 indica que a coluna não foi pedida
+         var posColunaNomeVacina = -1 // -1 indica que a coluna não foi pedida
          for (i in 0..ultimaColuna) {
              if (columns[i] == CAMPO_EXTERNO_NOME_VACINA) {
-                 posColNomeVacina = i
+                 posColunaNomeVacina = i
                  break
              }
          }
 
-         if (posColNomeVacina == -1) {
+         if (posColunaNomeVacina == -1) {
              return db.query(NOME_TABELA, columns, selection, selectionArgs, groupBy, having, orderBy)
          }
 
@@ -52,14 +51,14 @@ class TabelaUtentes(db: SQLiteDatabase) {
          for (i in 0..ultimaColuna) {
              if (i > 0) colunas += ","
 
-             colunas += if (i == posColNomeVacina) {
-                 "${TabelaVacinas.NOME_TABELA}.${TabelaVacinas.NOME_TABELA} AS $CAMPO_EXTERNO_NOME_VACINA"
+             colunas += if (i == posColunaNomeVacina) {
+                 "${TabelaVacinas.NOME_TABELA}.${TabelaVacinas.CAMPO_NOME_VACINA} AS $CAMPO_EXTERNO_NOME_VACINA"
              } else {
                  "${NOME_TABELA}.${columns[i]}"
              }
          }
 
-         val tabelas = "$NOME_TABELA INNER JOIN ${TabelaVacinas.NOME_TABELA} ON ${TabelaUtentes.NOME_TABELA}.${BaseColumns._ID}=$CAMPO_ID_VACINA"
+         val tabelas = "$NOME_TABELA INNER JOIN ${TabelaVacinas.NOME_TABELA} ON ${TabelaVacinas.NOME_TABELA}.${BaseColumns._ID}=$CAMPO_ID_VACINA"
 
          var sql = "SELECT $colunas FROM $tabelas"
 
@@ -72,7 +71,7 @@ class TabelaUtentes(db: SQLiteDatabase) {
 
          if (orderBy != null) sql += " ORDER BY $orderBy"
 
-         return db.rawQuery(sql, selectionArgs)*/
+         return db.rawQuery(sql, selectionArgs)
     }
 
 
@@ -84,9 +83,9 @@ class TabelaUtentes(db: SQLiteDatabase) {
         const val CAMPO_NR_UTENTE = "NumeroUtente"
         const val CAMPO_DATA_NASCIMENTO = "DataNascimento"
         const val CAMPO_ID_VACINA = "IdVacina"
-        //const val CAMPO_EXTERNO_NOME_VACINA = "NomeVacina"
+        const val CAMPO_EXTERNO_NOME_VACINA = "NomeVacina"
 
 
-        val TODAS_COLUNAS = arrayOf(BaseColumns._ID, CAMPO_NOME_UTENTE, CAMPO_NR_UTENTE, CAMPO_DATA_NASCIMENTO, CAMPO_ID_VACINA)
+        val TODAS_COLUNAS = arrayOf(BaseColumns._ID, CAMPO_NOME_UTENTE, CAMPO_NR_UTENTE, CAMPO_DATA_NASCIMENTO, CAMPO_ID_VACINA, CAMPO_EXTERNO_NOME_VACINA)
     }
 }

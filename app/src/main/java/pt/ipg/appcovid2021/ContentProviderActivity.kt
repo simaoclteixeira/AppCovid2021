@@ -10,6 +10,7 @@ import kotlin.reflect.KTypeProjection
 
 class ContentProviderActivity : ContentProvider() {
     private var BdCovidOpenHelper : BdCovidOpenHelper? = null
+
     override fun onCreate(): Boolean {
         BdCovidOpenHelper = BdCovidOpenHelper(context)
         return true
@@ -87,10 +88,10 @@ class ContentProviderActivity : ContentProvider() {
         return when (getUriMatcher().match(uri)){
             URI_UTENTE -> "$MULTIPLOS_ITEMS/$UTENTE"
             URI_UTENTE_ESPECIFICO -> "$UNICO_ITEMS/$UTENTE"
-            URI_LOCALIZACAO -> "$MULTIPLOS_ITEMS/$LOCALIZACAO"
-            URI_LOCALIZACAO_ESPECIFICA -> "$UNICO_ITEMS/$LOCALIZACAO"
             URI_VACINAS -> "$MULTIPLOS_ITEMS/$VACINAS"
             URI_VACINA_ESPECIFICA -> "$UNICO_ITEMS/$VACINAS"
+            URI_LOCALIZACAO -> "$MULTIPLOS_ITEMS/$LOCALIZACAO"
+            URI_LOCALIZACAO_ESPECIFICA -> "$UNICO_ITEMS/$LOCALIZACAO"
             else -> null
         }
     }

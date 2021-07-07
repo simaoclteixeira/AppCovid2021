@@ -118,14 +118,14 @@ class NovaVacinaFragment2 : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         if (uri == null) {
             Snackbar.make(
                 editTextNomeVacina,
-                ("erro ao inserir "),
+                ("Erro ao inserir "),
                 Snackbar.LENGTH_LONG
             ).show()
             return
         }
         Toast.makeText(
             requireContext(),
-            "Localidade gravada com sucesso",
+            "Vacina gravada com sucesso",
             Toast.LENGTH_LONG
         ).show()
 

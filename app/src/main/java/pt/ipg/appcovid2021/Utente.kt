@@ -23,16 +23,16 @@ data class Utente(var id: Long = -1, var nome: String, var dnascimento: String, 
             val colunaDnascimento = cursor.getColumnIndex(TabelaUtentes.CAMPO_DATA_NASCIMENTO)
             val colunaNrpaciente = cursor.getColumnIndex(TabelaUtentes.CAMPO_NR_UTENTE)
             val colunaIdVacina = cursor.getColumnIndex(TabelaUtentes.CAMPO_ID_VACINA)
-           // val colunaNomeVacina = cursor.getColumnIndex(TabelaUtentes.CAMPO_EXTERNO_NOME_VACINA)
+            val colunaNomeVacina = cursor.getColumnIndex(TabelaUtentes.CAMPO_EXTERNO_NOME_VACINA)
 
             val id= cursor.getLong(colunaId)
             val nomeUtente = cursor.getString(colunaNomeUtente)
             val dnascimento = cursor.getString(colunaDnascimento)
             val nrpaciente = cursor.getString(colunaNrpaciente)
             val idVacina = cursor.getLong(colunaIdVacina)
-            //val nomeVacina = if (colunaNomeVacina != -1) cursor.getString(colunaNomeVacina) else null
+            val nomeVacina = if (colunaNomeVacina != -1) cursor.getString(colunaNomeVacina) else null
 
-            return Utente(id ,nomeUtente ,dnascimento , nrpaciente,idVacina)
+            return Utente(id ,nomeUtente ,dnascimento , nrpaciente,idVacina, nomeVacina)
 
         }
     }

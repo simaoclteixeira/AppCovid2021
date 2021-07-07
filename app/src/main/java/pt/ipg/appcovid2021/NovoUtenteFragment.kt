@@ -28,6 +28,7 @@ class NovoUtenteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     private lateinit var editTextNomeUtente: EditText
     private lateinit var editTextNumeroUtente: EditText
     private lateinit var editTextDataNascimento: EditText
+    private lateinit var editTextCodigoPostal: EditText
     private lateinit var spinnerVacinas: Spinner
 
     private val binding get() = _binding!!
@@ -104,21 +105,21 @@ class NovoUtenteFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         val utente = Utente(nome = NovoUtente, nrpaciente = numeroUtente, dnascimento = dataNascimento, idVacina = idVacina)
 
         val uri = activity?.contentResolver?.insert(
-            ContentProviderActivity.ENDEREÇO_LOCALIZACAO,
+            ContentProviderActivity.ENDEREÇO_UTENTES,
             utente.toContentValues()
         )
 
         if (uri == null) {
             Snackbar.make(
                 editTextNomeUtente,
-                ("erro ao inserir "),
+                ("Erro ao inserir "),
                 Snackbar.LENGTH_LONG
             ).show()
             return
         }
         Toast.makeText(
             requireContext(),
-            "Localidade gravada com sucesso",
+            "Utente gravado com sucesso",
             Toast.LENGTH_LONG
         ).show()
 

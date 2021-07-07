@@ -15,9 +15,12 @@ class AdapterUtentes(val fragment:FragmentUtentes) : RecyclerView.Adapter<Adapte
         }
 
     class ViewHolderPacientes(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
-        private val textViewNome = itemView.findViewById<TextView>(R.id.textViewNomeLocalidadeItem)
-        private val textViewNumeroUtente = itemView.findViewById<TextView>(R.id.textViewDataVacina)
+        private val textViewNome = itemView.findViewById<TextView>(R.id.textViewNomeUtenteItem)
+        private val textViewNumeroUtente = itemView.findViewById<TextView>(R.id.textViewNumeroUtenteItem)
         private val textViewDataNascimento = itemView.findViewById<TextView>(R.id.textViewDataNascimentoItem)
+        private val textViewVacinaUtente = itemView.findViewById<TextView>(R.id.textViewVacinaUtente)
+
+
 
         private lateinit var utente: Utente
 
@@ -29,8 +32,9 @@ class AdapterUtentes(val fragment:FragmentUtentes) : RecyclerView.Adapter<Adapte
             this.utente = utente
 
             textViewNome.text = utente.nome
-            textViewDataNascimento.text = utente.dnascimento.toString()
+            textViewDataNascimento.text = utente.dnascimento
             textViewNumeroUtente.text = utente.nrpaciente
+            textViewVacinaUtente.text = utente.nomeVacina
         }
 
         override fun onClick(v: View?) {

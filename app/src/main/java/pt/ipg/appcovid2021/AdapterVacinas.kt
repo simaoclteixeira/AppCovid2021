@@ -19,8 +19,7 @@ class AdapterVacinas(val fragment: FragmentVacinas2): RecyclerView.Adapter<Adapt
     class ViewHolderVacina(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
         private val textViewNome = itemView.findViewById<TextView>(R.id.textViewNomeLocalidadeItem)
         private val textViewDataVacina = itemView.findViewById<TextView>(R.id.textViewDataVacina)
-        private val textViewLocalidadeVacina =
-            itemView.findViewById<TextView>(R.id.textViewLocalidadeItem)
+        private val textViewLocalidadeVacina = itemView.findViewById<TextView>(R.id.textViewLocalidadeItem)
 
         private lateinit var vacina: Vacina
 
@@ -32,7 +31,7 @@ class AdapterVacinas(val fragment: FragmentVacinas2): RecyclerView.Adapter<Adapt
             this.vacina = vacina
 
             textViewNome.text = vacina.nomeVacina
-            textViewDataVacina.text = vacina.data.toString()
+            textViewDataVacina.text = vacina.data
             textViewLocalidadeVacina.text = vacina.nomeLocalidade
         }
 
@@ -43,7 +42,7 @@ class AdapterVacinas(val fragment: FragmentVacinas2): RecyclerView.Adapter<Adapt
         }
 
         private fun seleciona() {
-            AdapterVacinas.ViewHolderVacina.selecionado = this
+            selecionado = this
             itemView.setBackgroundResource(R.color.cor_selecao)
             DadosApp.vacinaSelecionado = vacina
             DadosApp.activity.atualizaMenuVacinas(true)
@@ -51,7 +50,7 @@ class AdapterVacinas(val fragment: FragmentVacinas2): RecyclerView.Adapter<Adapt
         }
 
         private fun desSeleciona() {
-            AdapterVacinas.ViewHolderVacina.selecionado = null
+            selecionado = null
             itemView.setBackgroundResource(android.R.color.white)
         }
 

@@ -36,14 +36,10 @@ class EliminaVacinaFragment : Fragment() {
         textViewDataVacinaEliminar = view.findViewById(R.id.textViewEliminaDataVacina2)
         textViewLocalidadeVacinaEliminar = view.findViewById(R.id.textViewEliminaLocalidadeVacina2)
 
-
-
-
         val vacina = DadosApp.vacinaSelecionado!!
         textViewNomeVacinaEliminar.setText(vacina.nomeVacina)
         textViewDataVacinaEliminar.setText(vacina.data)
         textViewLocalidadeVacinaEliminar.setText(vacina.nomeLocalidade)
-
 
     }
 
@@ -52,13 +48,13 @@ class EliminaVacinaFragment : Fragment() {
     }
 
     fun elimina() {
-        val uriLocal = Uri.withAppendedPath(
+        val uriVacina = Uri.withAppendedPath(
             ContentProviderActivity.ENDEREÇO_VACINAS,
             DadosApp.vacinaSelecionado!!.id.toString()
         )
 
         val registos = activity?.contentResolver?.delete(
-            uriLocal,
+            uriVacina,
             null,
             null
         )

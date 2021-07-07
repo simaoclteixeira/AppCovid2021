@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textViewNomeLocalidadeItem"
+        android:id="@+id/textViewNomeUtenteItem"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margem_campos"
@@ -16,34 +16,21 @@
         android:layout_marginEnd="@dimen/margem_campos"
         android:layout_marginRight="@dimen/margem_campos"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintEnd_toStartOf="@+id/textViewCodigoPostalItem"
+        app:layout_constraintEnd_toStartOf="@+id/textViewVacinaUtente"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Simão Cardoso Leal Teixeira" />
 
     <TextView
-        android:id="@+id/textViewDataVacina"
+        android:id="@+id/textViewNumeroUtenteItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:paddingBottom="@dimen/margem_campos"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        app:layout_constraintStart_toStartOf="@+id/textViewNomeLocalidadeItem"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNomeLocalidadeItem"
+        app:layout_constraintStart_toStartOf="@+id/textViewNomeUtenteItem"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNomeUtenteItem"
         tools:text="140325117" />
-
-    <TextView
-        android:id="@+id/textViewCodigoPostalItem"
-        android:layout_width="66dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        android:textColor="@color/cor_destaque"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Pfizer" />
 
     <TextView
         android:id="@+id/textViewDataNascimentoItem"
@@ -55,7 +42,21 @@
         android:layout_marginEnd="64dp"
         android:layout_marginRight="64dp"
         android:text="@string/_01_08_1996"
-        app:layout_constraintEnd_toStartOf="@+id/textViewCodigoPostalItem"
-        app:layout_constraintStart_toEndOf="@+id/textViewDataVacina"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNomeLocalidadeItem" />
+        app:layout_constraintEnd_toStartOf="@+id/textViewVacinaUtente"
+        app:layout_constraintStart_toEndOf="@+id/textViewNumeroUtenteItem"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNomeUtenteItem" />
+
+    <TextView
+        android:id="@+id/textViewVacinaUtente"
+        android:layout_width="66dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="46dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@color/cor_destaque"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Pfizer" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

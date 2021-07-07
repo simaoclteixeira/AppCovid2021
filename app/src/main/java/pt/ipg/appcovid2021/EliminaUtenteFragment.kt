@@ -45,7 +45,7 @@ class EliminaUtenteFragment : Fragment() {
         val utente = DadosApp.UtenteSelecionado!!
         textViewNomeUtenteEliminar.setText(utente.nome)
         textViewNumeroUtenteEliminar.setText(utente.nrpaciente)
-        //textViewDataUtenteEliminar.setText(utente.dnascimento)
+        textViewDataUtenteEliminar.setText(utente.dnascimento)
         textViewVacinaUtenteEliminar.setText(utente.nomeVacina)
 
     }

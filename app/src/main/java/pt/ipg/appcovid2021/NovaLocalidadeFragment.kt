@@ -82,7 +82,7 @@ class NovaLocalidadeFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
         if (uri == null) {
             Snackbar.make(
                 editTextNomeNovaLocalidade,
-                ("erro ao inserir "),
+                ("Erro ao inserir "),
                 Snackbar.LENGTH_LONG
             ).show()
             return

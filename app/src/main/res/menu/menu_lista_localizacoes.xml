@@ -15,7 +15,7 @@
     <item
         android:id="@+id/action_eliminar_localizacao"
         android:icon="@android:drawable/ic_menu_delete"
-        android:title="@string/eliminar_localizacao"
+        android:title="@string/Elimina_Localidade"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_settings"
