@@ -19,9 +19,6 @@ class EliminaUtenteFragment : Fragment() {
     private lateinit var textViewDataUtenteEliminar: TextView
     private lateinit var textViewVacinaUtenteEliminar: TextView
 
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
