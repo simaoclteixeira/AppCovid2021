@@ -7,11 +7,11 @@ import java.util.*
 
 data class Localidade(var id: Long = -1, var nome: String, var codigoPostal: String) {
     fun toContentValues() : ContentValues{
-        val valores = ContentValues().apply {
-            put(TabelaLocalidades.NOME_LOCALIDADE,nome)
-            put(TabelaLocalidades.CODIGO_POSTAL,codigoPostal)
+        val valores = ContentValues()
+        valores.put(TabelaLocalidades.NOME_LOCALIDADE,nome)
+        valores.put(TabelaLocalidades.CODIGO_POSTAL,codigoPostal)
 
-        }
+
         return valores
     }
 

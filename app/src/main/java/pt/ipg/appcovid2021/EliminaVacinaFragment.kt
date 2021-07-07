@@ -19,9 +19,6 @@ class EliminaVacinaFragment : Fragment() {
     private lateinit var textViewLocalidadeVacinaEliminar: TextView
 
 
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,8 +41,8 @@ class EliminaVacinaFragment : Fragment() {
 
         val vacina = DadosApp.vacinaSelecionado!!
         textViewNomeVacinaEliminar.setText(vacina.nomeVacina)
-        //textViewDataVacinaEliminar.setText(vacina.data)
-        textViewLocalidadeVacinaEliminar.setText(vacina.localidade)
+        textViewDataVacinaEliminar.setText(vacina.data)
+        textViewLocalidadeVacinaEliminar.setText(vacina.nomeLocalidade)
 
 
     }
@@ -56,8 +53,8 @@ class EliminaVacinaFragment : Fragment() {
 
     fun elimina() {
         val uriLocal = Uri.withAppendedPath(
-            ContentProviderActivity.ENDEREÇO_LOCALIZACAO,
-            DadosApp.localidadeSelecionado!!.id.toString()
+            ContentProviderActivity.ENDEREÇO_VACINAS,
+            DadosApp.vacinaSelecionado!!.id.toString()
         )
 
         val registos = activity?.contentResolver?.delete(

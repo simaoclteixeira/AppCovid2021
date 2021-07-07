@@ -16,7 +16,7 @@
         android:layout_marginEnd="@dimen/margem_campos"
         android:layout_marginRight="@dimen/margem_campos"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintEnd_toStartOf="@+id/textViewCodigoPostalItem"
+        app:layout_constraintEnd_toStartOf="@+id/textViewLocalidadeItem"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Vacina Pfizer" />
@@ -33,7 +33,7 @@
         tools:text="20/12/2021" />
 
     <TextView
-        android:id="@+id/textViewCodigoPostalItem"
+        android:id="@+id/textViewLocalidadeItem"
         android:layout_width="72dp"
         android:layout_height="23dp"
         android:layout_marginTop="48dp"

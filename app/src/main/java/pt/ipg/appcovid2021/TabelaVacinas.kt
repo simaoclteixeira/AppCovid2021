@@ -33,8 +33,45 @@ class TabelaVacinas(db: SQLiteDatabase) {
         having: String?,
         orderBy: String?
     ): Cursor? {
-        return db.query(NOME_TABELA, columns, selection, selectionArgs, groupBy, having, orderBy)
+        val ultimaColuna = columns.size - 1
 
+        var posColunaNomeLocalidade = -1 // -1 indica que a coluna não foi pedida
+        for (i in 0..ultimaColuna) {
+            if (columns[i] == CAMPO_EXTERNO_NOME_LOCALIDADE) {
+                posColunaNomeLocalidade = i
+                break
+            }
+        }
+
+        if (posColunaNomeLocalidade == -1) {
+            return db.query(NOME_TABELA, columns, selection, selectionArgs, groupBy, having, orderBy)
+        }
+
+        var colunas = ""
+        for (i in 0..ultimaColuna) {
+            if (i > 0) colunas += ","
+
+            colunas += if (i == posColunaNomeLocalidade) {
+                "${TabelaLocalidades.NOME_TABELA}.${TabelaLocalidades.NOME_LOCALIDADE} AS $CAMPO_EXTERNO_NOME_LOCALIDADE"
+            } else {
+                "${NOME_TABELA}.${columns[i]}"
+            }
+        }
+
+        val tabelas = "$NOME_TABELA INNER JOIN ${TabelaLocalidades.NOME_TABELA} ON ${TabelaLocalidades.NOME_TABELA}.${BaseColumns._ID}=$CAMPO_ID_LOCALIDADE"
+
+        var sql = "SELECT $colunas FROM $tabelas"
+
+        if (selection != null) sql += " WHERE $selection"
+
+        if (groupBy != null) {
+            sql += " GROUP BY $groupBy"
+            if (having != null) " HAVING $having"
+        }
+
+        if (orderBy != null) sql += " ORDER BY $orderBy"
+
+        return db.rawQuery(sql, selectionArgs)
 
     }
 
@@ -43,10 +80,11 @@ class TabelaVacinas(db: SQLiteDatabase) {
         const val CAMPO_NOME_VACINA = "NomeVacina"
         const val CAMPO_DATA = "Data"
         const val CAMPO_ID_LOCALIDADE = "Localidade"
+        const val CAMPO_EXTERNO_NOME_LOCALIDADE = "nome_categoria"
 
 
 
 
-        val TODAS_COLUNAS = arrayOf(BaseColumns._ID, CAMPO_NOME_VACINA, CAMPO_DATA, CAMPO_ID_LOCALIDADE)
+        val TODAS_COLUNAS = arrayOf(BaseColumns._ID, CAMPO_NOME_VACINA, CAMPO_DATA, CAMPO_ID_LOCALIDADE, CAMPO_EXTERNO_NOME_LOCALIDADE)
     }
 }

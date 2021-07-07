@@ -56,8 +56,8 @@ class EliminaUtenteFragment : Fragment() {
 
     fun elimina() {
         val uriLocal = Uri.withAppendedPath(
-            ContentProviderActivity.ENDEREÇO_LOCALIZACAO,
-            DadosApp.localidadeSelecionado!!.id.toString()
+            ContentProviderActivity.ENDEREÇO_UTENTES,
+            DadosApp.UtenteSelecionado!!.id.toString()
         )
 
         val registos = activity?.contentResolver?.delete(
@@ -87,8 +87,8 @@ class EliminaUtenteFragment : Fragment() {
 
     fun processaOpcaoMenu(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_confirma_eliminar_localidade -> elimina()
-            R.id.action_cancelar_eliminar_localidade -> navegaLocal()
+            R.id.action_confirma_eliminar_utentes -> elimina()
+            R.id.action_cancelar_eliminar_utentes -> navegaLocal()
             else -> return false
         }
 

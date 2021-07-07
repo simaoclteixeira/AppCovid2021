@@ -17,8 +17,6 @@ import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import pt.ipg.appcovid2021.databinding.FragmentNovaVacina2Binding
-import java.text.SimpleDateFormat
-import java.util.*
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -110,10 +108,10 @@ class NovaVacinaFragment2 : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
         val idLocalidade = spinnerLocalidades.selectedItemId
 
-        val vacina = Vacina(nomeVacina = NovaVacina, data = DataVacina, localidade = idLocalidade.toString())
+        val vacina = Vacina(nomeVacina = NovaVacina, data = DataVacina, idLocalidade = idLocalidade)
 
         val uri = activity?.contentResolver?.insert(
-            ContentProviderActivity.ENDEREÇO_LOCALIZACAO,
+            ContentProviderActivity.ENDEREÇO_VACINAS,
             vacina.toContentValues()
         )
 
@@ -146,27 +144,27 @@ class NovaVacinaFragment2 : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
         return CursorLoader(
             requireContext(),
-            ContentProviderActivity.ENDEREÇO_VACINAS,
-            TabelaVacinas.TODAS_COLUNAS,
+            ContentProviderActivity.ENDEREÇO_LOCALIZACAO,
+            TabelaLocalidades.TODAS_COLUNAS,
             null, null,
-            TabelaVacinas.CAMPO_NOME_VACINA
+            TabelaLocalidades.NOME_LOCALIDADE
         )
     }
 
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
-        atualizaSpinnerVacinas(data)
+        atualizaSpinnerLocalidades(data)
     }
 
     override fun onLoaderReset(loader: Loader<Cursor>) {
-        atualizaSpinnerVacinas(data = null)
+        atualizaSpinnerLocalidades(data = null)
     }
 
-    private fun atualizaSpinnerVacinas(data: Cursor?) {
+    private fun atualizaSpinnerLocalidades(data: Cursor?) {
         spinnerLocalidades.adapter = SimpleCursorAdapter(
             requireContext(),
             android.R.layout.simple_list_item_1,
             data,
-            arrayOf(TabelaVacinas.CAMPO_NOME_VACINA),
+            arrayOf(TabelaLocalidades.NOME_LOCALIDADE),
             intArrayOf(android.R.id.text1),
             0
         )
